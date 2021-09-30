@@ -19,12 +19,12 @@ public class algorithmServiceFactory implements FactoryBean<algorithmService> {
 	//This is not required if we use jython standalone JAR 
 	 
 	PySystemState systemState = Py.getSystemState();
-	systemState.path.append(new PyString("~\\proyecto\\DeployITInnova\\src\\jython2.7.2\\Lib"));
+	systemState.path.append(new PyString("\\usr\\bin\\jython"));
 
 	//Here is the actual code that interprets our python file. 
 	
 	PythonInterpreter interpreter = new PythonInterpreter();
-	interpreter.execfile("~\\proyecto\\DeployITInnova\\src\\main\\java\\pe\\edu\\upc\\python\\algorithmServicePython.py"); 
+	interpreter.execfile("src\\main\\java\\pe\\edu\\upc\\python\\algorithmServicePython.py"); 
 	PyObject buildingObject = interpreter.get("algorithmServicePython").__call__(); 
 
 //Cast the created object to our Java interface 
